@@ -1,9 +1,17 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-
+const cors = require('cors')
 // Initialize the express app
 const app = express();
-
+const corsOptions = {
+    origin: 'https://flipkart-grid-abyss.web.app', // Replace with the specific URL you want to allow
+    methods: ['GET', 'POST'], // You can specify allowed HTTP methods
+    allowedHeaders: ['Content-Type', 'Authorization'], // Specify allowed headers
+  };
+  
+  // Apply CORS middleware with the specific URL
+app.use(cors(corsOptions));
+  
 app.use(bodyParser.json())
 // Define an endpoint in Express that will make an HTTP request
 app.get('/', async (req, res) => {
